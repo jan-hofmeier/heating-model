@@ -19,9 +19,9 @@ $$
 P_{burner} = \frac{\int P_{DHW} dt + \Delta E_{stored}}{\int Status_{burner} dt}
 $$
 
-    *   $P_{DHW}$: Power delivered to the DHW tank (calculated from flow & $\Delta T$).
-    *   $\Delta E_{stored}$: Change in energy stored in the boiler's internal water volume ($30L$) over the period.
-    *   This is calculated over long continuous periods (e.g., full days) to minimize errors from signal delays.
+*   $P_{DHW}$: Power delivered to the DHW tank (calculated from flow & $\Delta T$).
+*   $\Delta E_{stored}$: Change in energy stored in the boiler's internal water volume ($30L$) over the period.
+*   This is calculated over long continuous periods (e.g., full days) to minimize errors from signal delays.
 
 ### 3. Circuit Energy Calculations
 *   **Direct Calculation (DHW, Radiators):**
@@ -31,8 +31,8 @@ $$
 P = \dot{m} \cdot c_p \cdot (T_{in} - T_{out})
 $$
 
-    *   $\dot{m}$: Mass flow rate ($kg/s$), derived from Volumetric Flow ($L/h$) and Density ($\rho \approx 997 kg/m^3$).
-    *   $c_p$: Specific heat capacity of water ($\approx 4186 J/kgK$).
+*   $\dot{m}$: Mass flow rate ($kg/s$), derived from Volumetric Flow ($L/h$) and Density ($\rho \approx 997 kg/m^3$).
+*   $c_p$: Specific heat capacity of water ($\approx 4186 J/kgK$).
 
 *   **Residual Calculation (Underfloor):**
     The Underfloor circuit lacks a flow sensor. Its energy is calculated as the residual of the system energy balance:
@@ -41,8 +41,8 @@ $$
 P_{underfloor} = P_{generated} - P_{DHW} - P_{Radiator} - P_{stored\_change}
 $$
 
-    *   $P_{generated}$: $P_{burner}$ when Burner is ON.
-    *   $P_{stored\_change}$: Rate of change of internal boiler energy ($MC \cdot dT/dt$).
+*   $P_{generated}$: $P_{burner}$ when Burner is ON.
+*   $P_{stored\_change}$: Rate of change of internal boiler energy ($MC \cdot dT/dt$).
 
 ### 4. Steady State Detection
 *   Steady state is defined as periods where:
