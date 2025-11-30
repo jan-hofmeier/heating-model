@@ -14,7 +14,7 @@ This project models a heating system consisting of a Boiler (Oil Burner), Domest
 *   **Problem:** The burner's power output (kW) is unknown.
 *   **Solution:** We calibrate the power using "Summer Mode" data, where only the DHW circuit is active.
 *   **Calculation:**
-    $$ P_{burner} = \frac{\int P_{DHW} dt + \Delta E_{stored}}{\int Status_{burner} dt} $$
+$$ P_{burner} = \frac{\int P_{DHW} dt + \Delta E_{stored}}{\int Status_{burner} dt} $$
     *   $P_{DHW}$: Power delivered to the DHW tank (calculated from flow & $\Delta T$).
     *   $\Delta E_{stored}$: Change in energy stored in the boiler's internal water volume ($30L$) over the period.
     *   This is calculated over long continuous periods (e.g., full days) to minimize errors from signal delays.
@@ -22,13 +22,13 @@ This project models a heating system consisting of a Boiler (Oil Burner), Domest
 ### 3. Circuit Energy Calculations
 *   **Direct Calculation (DHW, Radiators):**
     For circuits with Flow Rate ($F$) and Return Temperature sensors:
-    $$ P = \dot{m} \cdot c_p \cdot (T_{in} - T_{out}) $$
+$$ P = \dot{m} \cdot c_p \cdot (T_{in} - T_{out}) $$
     *   $\dot{m}$: Mass flow rate ($kg/s$), derived from Volumetric Flow ($L/h$) and Density ($\rho \approx 997 kg/m^3$).
     *   $c_p$: Specific heat capacity of water ($\approx 4186 J/kgK$).
 
 *   **Residual Calculation (Underfloor):**
     The Underfloor circuit lacks a flow sensor. Its energy is calculated as the residual of the system energy balance:
-    $$ P_{underfloor} = P_{generated} - P_{DHW} - P_{Radiator} - P_{stored\_change} $$
+$$ P_{underfloor} = P_{generated} - P_{DHW} - P_{Radiator} - P_{stored\_change} $$
     *   $P_{generated}$: $P_{burner}$ when Burner is ON.
     *   $P_{stored\_change}$: Rate of change of internal boiler energy ($MC \cdot dT/dt$).
 
